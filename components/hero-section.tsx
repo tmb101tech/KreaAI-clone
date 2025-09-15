@@ -5,7 +5,31 @@ import { Badge } from '@/components/ui/badge';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-const slides = [
+// ✅ Define a union type for button variants
+type ButtonVariant = "default" | "outline";
+
+const slides: {
+  left: {
+    title: string;
+    subtitle: string;
+    description: string;
+    badge: string;
+    buttonText: string;
+    buttonVariant: ButtonVariant;
+    image: string;
+    gradient: string;
+  };
+  right: {
+    title: string;
+    subtitle: string;
+    description: string;
+    badge: string;
+    buttonText: string;
+    buttonVariant: ButtonVariant;
+    image: string;
+    gradient: string;
+  };
+}[] = [
   {
     left: {
       title: "WAN 2.2",
@@ -13,7 +37,7 @@ const slides = [
       description: "Generate complex images with the latest fast and powerful WAN 2.2 model. Experience advanced power generation and ultra-realistic results.",
       badge: "FEATURED MODEL",
       buttonText: "Try WAN 2.2",
-      buttonVariant: "default" as const,
+      buttonVariant: "default",
       image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=800",
       gradient: "from-black/70 via-black/50 to-transparent"
     },
@@ -23,7 +47,7 @@ const slides = [
       description: "Get a visual to use designed to use FLUX.1 Krea model locally. Deploy, train, modify a model and learn the technical aspect of AI generation.",
       badge: "OS MODEL",
       buttonText: "Learn More",
-      buttonVariant: "outline" as const,
+      buttonVariant: "outline",
       image: "https://images.pexels.com/photos/602750/pexels-photo-602750.jpeg?auto=compress&cs=tinysrgb&w=800",
       gradient: "from-black/70 via-black/50 to-transparent"
     }
@@ -35,7 +59,7 @@ const slides = [
       description: "Access professional-grade AI tools for creative workflows. Generate, edit, and enhance content with state-of-the-art models.",
       badge: "PRO TOOLS",
       buttonText: "Get Started",
-      buttonVariant: "default" as const,
+      buttonVariant: "default",
       image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
       gradient: "from-black/70 via-black/50 to-transparent"
     },
@@ -45,7 +69,7 @@ const slides = [
       description: "Experience real-time AI generation with instant results. Perfect for interactive applications and live demonstrations.",
       badge: "REAL-TIME",
       buttonText: "Try Live",
-      buttonVariant: "default" as const,
+      buttonVariant: "default",
       image: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=800",
       gradient: "from-black/70 via-black/50 to-transparent"
     }
@@ -57,7 +81,7 @@ const slides = [
       description: "Create stunning videos with AI-powered generation. From concept to completion in minutes with professional quality.",
       badge: "VIDEO AI",
       buttonText: "Create Video",
-      buttonVariant: "default" as const,
+      buttonVariant: "default",
       image: "https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?auto=compress&cs=tinysrgb&w=800",
       gradient: "from-black/70 via-black/50 to-transparent"
     },
@@ -67,7 +91,7 @@ const slides = [
       description: "Generate stunning 3D models and scenes with advanced AI. Perfect for game development, architecture, and design workflows.",
       badge: "3D AI",
       buttonText: "Try 3D",
-      buttonVariant: "outline" as const,
+      buttonVariant: "outline",
       image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
       gradient: "from-black/70 via-black/50 to-transparent"
     }
@@ -79,7 +103,7 @@ const slides = [
       description: "Generate high-quality text content with advanced AI models. Perfect for content creation and copywriting.",
       badge: "TEXT AI",
       buttonText: "Try Writing",
-      buttonVariant: "default" as const,
+      buttonVariant: "default",
       image: "https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=800",
       gradient: "from-black/70 via-black/50 to-transparent"
     },
@@ -89,7 +113,7 @@ const slides = [
       description: "Create music, sound effects, and voice synthesis with cutting-edge audio AI technology.",
       badge: "AUDIO AI",
       buttonText: "Try Audio",
-      buttonVariant: "outline" as const,
+      buttonVariant: "outline",
       image: "https://images.pexels.com/photos/164938/pexels-photo-164938.jpeg?auto=compress&cs=tinysrgb&w=800",
       gradient: "from-black/70 via-black/50 to-transparent"
     }
@@ -101,7 +125,7 @@ const slides = [
       description: "Generate, debug, and optimize code with AI assistance. Boost your development productivity.",
       badge: "CODE AI",
       buttonText: "Try Coding",
-      buttonVariant: "default" as const,
+      buttonVariant: "default",
       image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800",
       gradient: "from-black/70 via-black/50 to-transparent"
     },
@@ -111,7 +135,7 @@ const slides = [
       description: "Analyze data and generate insights with powerful AI-driven analytics tools and visualizations.",
       badge: "DATA AI",
       buttonText: "Analyze Data",
-      buttonVariant: "outline" as const,
+      buttonVariant: "outline",
       image: "https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=800",
       gradient: "from-black/70 via-black/50 to-transparent"
     }
